@@ -1,7 +1,8 @@
-package com.faris.runningapp
+package com.faris.runningapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.faris.runningapp.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
