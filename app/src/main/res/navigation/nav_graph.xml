@@ -2,12 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/runFragment">
+    app:startDestination="@id/setupFragment">
+
+    <action
+        android:id="@+id/action_global_trackingFragment"
+        app:destination="@id/trackingFragment"
+        app:launchSingleTop="true" />
 
     <fragment
         android:id="@+id/runFragment"
         android:name="com.faris.runningapp.ui.view.RunFragment"
-        android:label="RunFragment" >
+        android:label="RunFragment">
         <action
             android:id="@+id/action_runFragment_to_trackingFragment"
             app:destination="@id/trackingFragment" />
@@ -15,7 +20,7 @@
     <fragment
         android:id="@+id/setupFragment"
         android:name="com.faris.runningapp.ui.view.SetupFragment"
-        android:label="SetupFragment" >
+        android:label="SetupFragment">
         <action
             android:id="@+id/action_setupFragment_to_runFragment"
             app:destination="@id/runFragment" />
@@ -27,7 +32,7 @@
     <fragment
         android:id="@+id/trackingFragment"
         android:name="com.faris.runningapp.ui.view.TrackingFragment"
-        android:label="TrackingFragment" >
+        android:label="TrackingFragment">
         <action
             android:id="@+id/action_trackingFragment_to_runFragment"
             app:destination="@id/runFragment" />
