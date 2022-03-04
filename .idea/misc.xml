@@ -6,6 +6,8 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/drawable/bottom_nav_selector.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_add_black.xml" value="0.1435" />
+        <entry key="app/src/main/res/drawable/ic_close_white.xml" value="0.2085" />
+        <entry key="app/src/main/res/drawable/ic_delete.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_graph.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_pause_black_24dp.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_run.xml" value="0.2085" />
@@ -18,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_tracking.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/toolbar_tracking_menu.xml" value="0.2833333333333333" />
       </map>
     </option>
   </component>

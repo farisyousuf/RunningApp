@@ -13,4 +13,11 @@
     <string name="kg">kg</string>
     <string name="continue_btn">Continue</string>
     <string name="setup_title">Welcome!\nPlease enter your name and weight.</string>
+    <string name="cancel_run">Cancel Run</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="cancel_alert_title">Cancel the run?</string>
+    <string name="cancel_alert_message">Are you sure you want to cancel the run and delete all its data?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
