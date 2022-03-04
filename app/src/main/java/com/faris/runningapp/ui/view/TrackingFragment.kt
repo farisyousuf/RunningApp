@@ -14,6 +14,7 @@ import com.faris.runningapp.services.TrackingService
 import com.faris.runningapp.ui.viewmodels.MainViewModel
 import com.faris.runningapp.util.Constants.ACTION_PAUSE_SERVICE
 import com.faris.runningapp.util.Constants.ACTION_START_OR_RESUME_SERVICE
+import com.faris.runningapp.util.TrackingUtility
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.PolylineOptions
@@ -30,7 +31,7 @@ class TrackingFragment : Fragment() {
     private var map: GoogleMap? = null
     private var isTracking = false
     private var pathPoints = mutableListOf<Polyline>()
-
+    private var curTimeInMillis = 0L
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,11 +56,17 @@ class TrackingFragment : Fragment() {
             addLatestPolyline()
             moveCameraToUser()
         }
+
+        TrackingService.timeRunInMillis.observe(viewLifecycleOwner) {
+            curTimeInMillis = it
+            val formattedTime = TrackingUtility.getFormattedStopWatch(curTimeInMillis, true)
+            binding.tvTimer.text = formattedTime
+        }
     }
 
     private fun toggleRun() {
         binding.btnToggleRun.isEnabled = false
-        if(isTracking) {
+        if (isTracking) {
             sendCommandToService(ACTION_PAUSE_SERVICE)
         } else {
             sendCommandToService(ACTION_START_OR_RESUME_SERVICE)
@@ -68,7 +75,7 @@ class TrackingFragment : Fragment() {
 
     private fun updateTracking(isTracking: Boolean) {
         this.isTracking = isTracking
-        if(!isTracking) {
+        if (!isTracking) {
             binding.btnToggleRun.text = "Start"
             binding.btnToggleRun.isEnabled = true
             binding.btnFinishRun.visibility = View.VISIBLE
