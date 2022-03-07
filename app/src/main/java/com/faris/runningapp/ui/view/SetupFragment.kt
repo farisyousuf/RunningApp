@@ -51,7 +51,6 @@ class SetupFragment : Fragment() {
                 .setPopUpTo(R.id.setupFragment, true)
                 .build()
             findNavController().navigate(SetupFragmentDirections.actionSetupFragmentToRunFragment(), navOptions)
-            return
         }
         binding.tvContinue.setOnClickListener {
             if (writePersonalDataToSharedPref()) {
