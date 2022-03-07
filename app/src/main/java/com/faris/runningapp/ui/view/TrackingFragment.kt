@@ -25,11 +25,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
+import javax.inject.Inject
 import kotlin.math.round
 
 @AndroidEntryPoint
 class TrackingFragment : Fragment() {
-    private val weight: Float = 80f
+
+    @set:Inject
+    var weight: Float = 80f
     private var _binding: FragmentTrackingBinding? = null
 
     // This property is only valid between onCreateView and

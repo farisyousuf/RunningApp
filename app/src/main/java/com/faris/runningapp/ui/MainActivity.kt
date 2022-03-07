@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    fun setToolbarTitle(title: String) {
+        binding.tvToolbarTitle.text = title
+    }
+
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         navigateToTrackingFragmentIfNeeded(intent)

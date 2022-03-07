@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -16,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.faris.runningapp.adapters.RunAdapter
 import com.faris.runningapp.databinding.FragmentRunBinding
+import com.faris.runningapp.other.SortType
 import com.faris.runningapp.ui.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,7 +47,32 @@ class RunFragment : Fragment() {
         createLocationPermissionsRequest()
         checkOrUpdatePermissions()
         setupRecyclerView()
-        viewModel.runsSortedByDate.observe(viewLifecycleOwner) {
+
+        when(viewModel.sortType) {
+            SortType.DATE -> binding.spFilter.setSelection(0)
+            SortType.RUNNING_TIME -> binding.spFilter.setSelection(1)
+            SortType.DISTANCE -> binding.spFilter.setSelection(2)
+            SortType.AVG_SPEED -> binding.spFilter.setSelection(3)
+            SortType.CALORIES_BURNED -> binding.spFilter.setSelection(4)
+        }
+
+        binding.spFilter.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                when(position) {
+                    0 -> viewModel.sortRuns(SortType.DATE)
+                    1 -> viewModel.sortRuns(SortType.RUNNING_TIME)
+                    2 -> viewModel.sortRuns(SortType.DISTANCE)
+                    3 -> viewModel.sortRuns(SortType.AVG_SPEED)
+                    4 -> viewModel.sortRuns(SortType.CALORIES_BURNED)
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                //No implementation here
+            }
+
+        }
+        viewModel.runs.observe(viewLifecycleOwner) {
             runAdapter.submitList(it)
         }
         binding.fab.setOnClickListener {
