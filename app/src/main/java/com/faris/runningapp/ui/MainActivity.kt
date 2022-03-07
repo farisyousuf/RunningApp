@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
         val navHostFragment = binding.navHostFragment.getFragment() as NavHostFragment
         binding.bottomNavigationView.setupWithNavController(navHostFragment.navController)
-
+        binding.bottomNavigationView.setOnItemReselectedListener {
+            //No Implementation
+        }
         navHostFragment.navController
             .addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
