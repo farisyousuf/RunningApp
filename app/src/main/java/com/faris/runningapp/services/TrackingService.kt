@@ -139,8 +139,8 @@ class TrackingService : LifecycleService() {
                     lastSecondTimeStamp += 1000L
                 }
                 delay(50L)
-                timeRun += lapTime
             }
+            timeRun += lapTime
         }
     }
 
